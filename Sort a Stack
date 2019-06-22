@@ -1,0 +1,19 @@
+#include <stack>
+#include<algorithm>
+using namespace std;
+void sortStack(stack<int> &s){
+	// Write your code here
+// Write your code here
+    int i=0;
+    int y=s.size();
+int temp_arr[y];
+    while(s.empty()!=1){
+        temp_arr[i]=s.top();
+        s.pop();
+        i++;
+    }
+    sort(temp_arr,temp_arr+i);
+    for(int j=i-1;j>=0;j--){
+        s.push(temp_arr[j]);
+    }
+}
