@@ -1,0 +1,73 @@
+#include<stack>
+bool checkBalanced(char *exp) {
+	// Write your code here
+    int flag=0;
+    stack<char> s;
+    int i;
+for(i=0;exp[i]!='\0';i++){
+    if(exp[i]=='{'||exp[i]=='['||exp[i]=='('){
+        s.push(exp[i]);
+    }
+    if(exp[i]=='}'){
+        if(s.empty()==false){
+        if(s.top()=='{'){
+            flag=1;
+            s.pop();
+        }
+        else{
+            flag=0;
+            break;
+        }
+        }
+        else{
+            flag=0;
+        }
+        }
+         else if(exp[i]==']'){
+             if(s.empty()==false){
+             if(s.top()=='['){
+                 s.pop();
+                 flag=1;
+             }
+             else{
+                 flag=0;
+                 break;
+             }
+             }
+             else{
+                 flag=0;
+             }
+         }
+            else if(exp[i]==')'){
+                if(s.empty()==false){
+                if(s.top()=='('){
+                    s.pop();
+                    flag=1;
+                }
+                else{
+                    flag=0;
+                    break;
+                }
+                }
+                else{
+                    flag=0;
+                }
+            }
+            else{
+                flag=0;
+                //break;
+           }
+}
+   /* if(s.empty()==true){
+        flag=1;
+    }
+    else{
+        flag=0;
+    }*/
+    if(flag==0){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
